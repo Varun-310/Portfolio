@@ -207,7 +207,7 @@ export default function App() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
   const [activeNav, setActiveNav] = useState('hero');
-  const heroText = 'Applied AI Engineer — building intelligent systems that make a real-world impact.';
+  const heroText = 'AI Engineer — building intelligent systems that make a real-world impact.';
   const { displayed, done } = useTyping(heroText);
 
   // Parallax values for hero photo
