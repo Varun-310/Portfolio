@@ -289,7 +289,7 @@ export default function App() {
                 <span className="line i1"><span className="str">"""</span></span>
                 <span className="line">&nbsp;</span>
                 <span className="line i1"><span className="vr">name</span> <span className="pnc">=</span> <span className="str">"Varun K S"</span></span>
-                <span className="line i1"><span className="vr">role</span> <span className="pnc">=</span> <span className="str">"Applied AI Engineer"</span></span>
+                <span className="line i1"><span className="vr">role</span> <span className="pnc">=</span> <span className="str">"AI Engineer"</span></span>
                 <span className="line i1"><span className="vr">location</span> <span className="pnc">=</span> <span className="str">"Pollachi, Coimbatore"</span></span>
                 <span className="line i1"><span className="vr">email</span> <span className="pnc">=</span> <span className="str">"itsvarun310@gmail.com"</span></span>
                 <span className="line i1"><span className="vr">phone</span> <span className="pnc">=</span> <span className="str">"9600785828"</span></span>
@@ -357,7 +357,7 @@ export default function App() {
           <span className="line i1"><span className="kw">def</span> <span className="fn">about_me</span><span className="pnc">(</span><span className="slf">self</span><span className="pnc">):</span></span>
           <span className="line i2"><span className="str">"""Returns a brief professional summary."""</span></span>
           <span className="line i2"><span className="kw">return</span> <span className="pnc">(</span></span>
-          <span className="line i3"><span className="str">"Applied AI engineer with hands-on experience designing"</span></span>
+          <span className="line i3"><span className="str">"AI engineer with hands-on experience designing"</span></span>
           <span className="line i3"><span className="str">"and deploying end-to-end AI systems across NLP,"</span></span>
           <span className="line i3"><span className="str">"computer vision, and sensor-driven intelligence."</span></span>
           <span className="line i3"><span className="str">"Strong focus on practical deployment, automation,"</span></span>
