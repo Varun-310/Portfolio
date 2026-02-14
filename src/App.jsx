@@ -292,7 +292,6 @@ export default function App() {
                 <span className="line i1"><span className="vr">role</span> <span className="pnc">=</span> <span className="str">"AI Engineer"</span></span>
                 <span className="line i1"><span className="vr">location</span> <span className="pnc">=</span> <span className="str">"Pollachi, Coimbatore"</span></span>
                 <span className="line i1"><span className="vr">email</span> <span className="pnc">=</span> <span className="str">"itsvarun310@gmail.com"</span></span>
-                <span className="line i1"><span className="vr">phone</span> <span className="pnc">=</span> <span className="str">"9600785828"</span></span>
               </motion.div>
 
               {/* Quick links under the code */}
