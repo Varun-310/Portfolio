@@ -467,6 +467,7 @@
   display: flex;
   gap: 10px;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 .stat-card {
@@ -1055,6 +1056,31 @@
     padding: 8px 12px;
   }
 
+  .event-icon-wrap {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    border-radius: 8px;
+  }
+
+  .event-icon-wrap svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .event-card {
+    gap: 10px;
+    padding: 12px 14px;
+  }
+
+  .event-title {
+    font-size: 0.82rem;
+  }
+
+  .event-desc {
+    font-size: 0.75rem;
+  }
+
   .hero-terminal-status {
     width: auto;
   }
@@ -1106,6 +1132,26 @@
   }
 
   .hero-stats {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .stat-card {
+    flex: 1 1 40%;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .event-card {
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .event-header {
     flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
   }
 }
