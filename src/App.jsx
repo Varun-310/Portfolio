@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, useScroll, useSpring, useInView, useMotionValue, useTransform } from 'framer-motion';
 import Gutter from './Gutter';
-import { GithubIcon, LinkedInIcon, MailIcon, DownloadIcon } from './Icons';
+import { GithubIcon, LinkedInIcon, MailIcon, DownloadIcon, TrophyIcon, MedalIcon, CalendarIcon } from './Icons';
 import './App.css';
 
 /* ════════════════════════════════════════
@@ -135,6 +135,39 @@ function SkillTag({ name, delay }) {
       transition={{ delay, duration: 0.3, type: 'spring', stiffness: 200, damping: 15 }}
       viewport={{ once: true }}
     >{name}</motion.span>
+  );
+}
+
+/* ════════════════════════════════════════
+   Event card with icon badge
+   ════════════════════════════════════════ */
+const EVENT_ICONS = { winner: TrophyIcon, finalist: MedalIcon, participant: CalendarIcon };
+const STATUS_LABELS = { winner: 'Winner', finalist: 'Finalist', participant: 'Participated' };
+
+function EventCard({ title, description, status, index }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-20px' });
+  const Icon = EVENT_ICONS[status] || CalendarIcon;
+
+  return (
+    <motion.div
+      ref={ref}
+      className={`event-card event-${status}`}
+      initial={{ opacity: 0, y: 16 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.45, delay: index * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
+    >
+      <div className={`event-icon-wrap event-icon-${status}`}>
+        <Icon />
+      </div>
+      <div className="event-content">
+        <div className="event-header">
+          <span className="event-title">{title}</span>
+          <span className={`event-status event-status-${status}`}>{STATUS_LABELS[status]}</span>
+        </div>
+        <span className="event-desc">{description}</span>
+      </div>
+    </motion.div>
   );
 }
 
@@ -323,13 +356,18 @@ export default function App() {
             <motion.div className="hero-stats"
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.5 }}>
-              <div className="stat-card">
-                <span className="stat-value">SIH '24</span>
-                <span className="stat-label">Winner 🏆</span>
+              <div className="stat-card stat-card-winner">
+                <TrophyIcon />
+                <span className="stat-value" style={{ whiteSpace: 'nowrap' }}>SIH '24</span>
+                <span className="stat-label">Winner</span>
               </div>
               <div className="stat-card">
-                <span className="stat-value">4+</span>
+                <span className="stat-value">6+</span>
                 <span className="stat-label">Projects</span>
+              </div>
+              <div className="stat-card">
+                <span className="stat-value">6</span>
+                <span className="stat-label">Events</span>
               </div>
               <div className="stat-card">
                 <span className="stat-value">5+</span>
@@ -356,11 +394,9 @@ export default function App() {
           <span className="line i1"><span className="kw">def</span> <span className="fn">about_me</span><span className="pnc">(</span><span className="slf">self</span><span className="pnc">):</span></span>
           <span className="line i2"><span className="str">"""Returns a brief professional summary."""</span></span>
           <span className="line i2"><span className="kw">return</span> <span className="pnc">(</span></span>
-          <span className="line i3"><span className="str">"AI engineer with hands-on experience designing"</span></span>
-          <span className="line i3"><span className="str">"and deploying end-to-end AI systems across NLP,"</span></span>
-          <span className="line i3"><span className="str">"computer vision, and sensor-driven intelligence."</span></span>
-          <span className="line i3"><span className="str">"Strong focus on practical deployment, automation,"</span></span>
-          <span className="line i3"><span className="str">"and real-world impact in startup and production environments."</span></span>
+          <span className="line i3"><span className="str">"AI engineer specializing in LLM systems and real-time ML pipelines."</span></span>
+          <span className="line i3"><span className="str">"SIH '24 Winner. Built AI for scam detection, flood prediction, and emotion analysis."</span></span>
+          <span className="line i3"><span className="str">"Focused on practical deployment and real-world impact."</span></span>
           <span className="line i2"><span className="pnc">)</span></span>
         </CodeSection>
 
@@ -378,17 +414,17 @@ export default function App() {
             </div>
             <div className="skill-category">
               <span className="line i2"><span className="str">"domains"</span><span className="pnc">:</span> <span className="pnc">[</span></span>
-              {['Machine Learning', 'Deep Learning', 'NLP', 'Computer Vision'].map((s, i) => <SkillTag key={s} name={s} delay={i * 0.06 + 0.2} />)}
+              {['Machine Learning', 'Deep Learning', 'NLP', 'Computer Vision', 'Gen AI', 'Prompt Engineering'].map((s, i) => <SkillTag key={s} name={s} delay={i * 0.06 + 0.2} />)}
               <span className="line i2"><span className="pnc">],</span></span>
             </div>
             <div className="skill-category">
               <span className="line i2"><span className="str">"tools"</span><span className="pnc">:</span> <span className="pnc">[</span></span>
-              {['n8n', 'FastAPI', 'React', 'TensorFlow', 'Scikit-learn'].map((s, i) => <SkillTag key={s} name={s} delay={i * 0.06 + 0.2} />)}
+              {['FastAPI', 'TensorFlow', 'PyTorch', 'Scikit-learn', 'LangChain', 'Hugging Face', 'OpenCV', 'Docker', 'Git', 'n8n'].map((s, i) => <SkillTag key={s} name={s} delay={i * 0.06 + 0.2} />)}
               <span className="line i2"><span className="pnc">],</span></span>
             </div>
             <div className="skill-category">
               <span className="line i2"><span className="str">"soft_skills"</span><span className="pnc">:</span> <span className="pnc">[</span></span>
-              {['Team Leadership', 'Communication'].map((s, i) => <SkillTag key={s} name={s} delay={i * 0.06 + 0.2} />)}
+              {['Team Leadership', 'Communication', 'Problem Solving'].map((s, i) => <SkillTag key={s} name={s} delay={i * 0.06 + 0.2} />)}
               <span className="line i2"><span className="pnc">],</span></span>
             </div>
           </div>
@@ -405,7 +441,7 @@ export default function App() {
             features={['Real-time GLOF Probability (XGBoost + live sensors)', 'Interactive React Dashboard with visualizations', 'SAR Image Analysis (Sentinel-1 CNN)', 'Automated Lake Size Detection', 'DEM-based Terrain & Water Flow Analysis', 'SMS Emergency Alerts (Twilio)', 'Live Weather Integration']}
             tech={['FastAPI', 'XGBoost', 'TensorFlow', 'React', 'Arduino/ESP32', 'LoRa']}
             repoUrl="https://github.com/Varun-310/Early-Warning-System-for-GLOF"
-            badge="🏆 SIH '24 Winner">
+            badge="SIH '24 Winner">
             <div className="sub-project">
               <span className="line"><span className="cmt"># ↳ Sub-module: SAR Image Classification for GLOF</span></span>
               <span className="line"><span className="kw">class</span> <span className="cls">SARClassification</span><span className="pnc">(</span><span className="cls">GLOFSystem</span><span className="pnc">):</span></span>
@@ -439,13 +475,20 @@ export default function App() {
         </CodeSection>
 
         {/* ═══ EVENTS ═══ */}
-        <CodeSection id="events" gutterStart={111} gutterCount={9}>
+        <CodeSection id="events" gutterStart={111} gutterCount={14}>
           <span className="line">&nbsp;</span>
           <span className="line"><span className="cmt"># ─── Events & Achievements ────────────────────────────────</span></span>
           <span className="line">&nbsp;</span>
           <span className="line i1"><span className="vr">events</span> <span className="pnc">=</span> <span className="pnc">[</span></span>
-          <div className="list-block">
-            {["Smart India Hackathon '24 — Winner 🏆 Developed early warning system for GLOFs (DRDO)", "IMPELLZ'23 — Paper on 'Secure Biometric-Enabled Medical Data Management System'", "4th Intl Conf on Engineering & Technology — Paper on 'Nanostructured Materials'", "Bit Hacks Software Edition 2023 — Qualified to finals in AR/VR"].map((e, i) => <div className="list-item" key={i}>{e}</div>)}
+          <div className="events-grid">
+            {[
+              { title: "Smart India Hackathon '24", description: "Developed GLOF early warning system for DRDO — real-time prediction with IoT sensors & ML", status: 'winner' },
+              { title: "India AI Impact Buildathon — HCL GUVI", description: "Top 2% National Finalist — Built Honeypot AI System for detecting and engaging scammers", status: 'finalist' },
+              { title: "Israel-India Global Innovators Hackathon", description: "Finalist — Built a Local Report Generator using LLM inference for vulnerability analysis", status: 'finalist' },
+              { title: "IMPELLZ'23", description: "Paper presentation — Secure Biometric-Enabled Medical Data Management System", status: 'participant' },
+              { title: "4th Intl Conf on Engineering & Technology", description: "Paper presentation — Nanostructured Materials research", status: 'participant' },
+              { title: "Bit Hacks Software Edition 2023", description: "Qualified to finals in AR/VR track", status: 'participant' },
+            ].map((evt, i) => <EventCard key={i} index={i} {...evt} />)}
           </div>
           <span className="line i1"><span className="pnc">]</span></span>
         </CodeSection>

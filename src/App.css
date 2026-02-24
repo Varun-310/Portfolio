@@ -499,6 +499,46 @@
   margin-top: 2px;
 }
 
+/* Winner stat card — golden highlight */
+.stat-card-winner {
+  background: rgba(224, 175, 104, 0.06);
+  border-color: rgba(224, 175, 104, 0.3);
+  animation: winnerCardGlow 3s ease-in-out infinite;
+}
+
+.stat-card-winner:hover {
+  border-color: rgba(224, 175, 104, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 24px rgba(224, 175, 104, 0.12);
+}
+
+.stat-card-winner svg {
+  color: #e0af68;
+  margin-bottom: 2px;
+}
+
+.stat-card-winner .stat-value {
+  color: #e0af68;
+}
+
+.stat-card-winner .stat-label {
+  color: #e0af68;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+@keyframes winnerCardGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 8px rgba(224, 175, 104, 0.08);
+  }
+
+  50% {
+    box-shadow: 0 0 16px rgba(224, 175, 104, 0.18);
+  }
+}
+
 /* Terminal status line */
 .hero-terminal-status {
   width: 100%;
@@ -652,7 +692,7 @@
    ═══════════════════════════════════════ */
 .skills-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
   margin-top: 6px;
 }
@@ -720,6 +760,175 @@
 
 .list-item:last-child::after {
   content: '"';
+}
+
+/* ═══════════════════════════════════════
+   EVENT CARDS
+   ═══════════════════════════════════════ */
+.events-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.event-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.event-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.event-card.event-winner::before {
+  background: linear-gradient(135deg, rgba(224, 175, 104, 0.04) 0%, transparent 60%);
+}
+
+.event-card.event-finalist::before {
+  background: linear-gradient(135deg, rgba(125, 207, 255, 0.04) 0%, transparent 60%);
+}
+
+.event-card:hover::before {
+  opacity: 1;
+}
+
+.event-card:hover {
+  border-color: #2a3040;
+  background: #141920;
+  transform: translateX(4px);
+}
+
+.event-card.event-winner:hover {
+  border-color: rgba(224, 175, 104, 0.3);
+  box-shadow: 0 0 20px rgba(224, 175, 104, 0.06);
+}
+
+.event-card.event-finalist:hover {
+  border-color: rgba(125, 207, 255, 0.3);
+  box-shadow: 0 0 20px rgba(125, 207, 255, 0.06);
+}
+
+/* Icon badges */
+.event-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  background: var(--bg-tertiary);
+  transition: all 0.3s ease;
+}
+
+.event-icon-winner {
+  background: rgba(224, 175, 104, 0.1);
+  border-color: rgba(224, 175, 104, 0.25);
+  color: #e0af68;
+  animation: winnerGlow 3s ease-in-out infinite;
+}
+
+.event-icon-finalist {
+  background: rgba(125, 207, 255, 0.1);
+  border-color: rgba(125, 207, 255, 0.25);
+  color: #7dcfff;
+  animation: finalistGlow 3s ease-in-out infinite;
+}
+
+@keyframes winnerGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 8px rgba(224, 175, 104, 0.15);
+  }
+
+  50% {
+    box-shadow: 0 0 18px rgba(224, 175, 104, 0.3);
+  }
+}
+
+@keyframes finalistGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 8px rgba(125, 207, 255, 0.12);
+  }
+
+  50% {
+    box-shadow: 0 0 18px rgba(125, 207, 255, 0.25);
+  }
+}
+
+/* Card content */
+.event-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.event-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.event-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.event-status {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 3px;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.event-status-winner {
+  background: rgba(224, 175, 104, 0.12);
+  color: #e0af68;
+  border: 1px solid rgba(224, 175, 104, 0.25);
+}
+
+.event-status-finalist {
+  background: rgba(125, 207, 255, 0.1);
+  color: #7dcfff;
+  border: 1px solid rgba(125, 207, 255, 0.2);
+}
+
+.event-status-participant {
+  background: rgba(139, 148, 158, 0.08);
+  color: var(--text-secondary);
+  border: 1px solid rgba(139, 148, 158, 0.15);
+}
+
+.event-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
 }
 
 /* ═══════════════════════════════════════
@@ -869,7 +1078,7 @@
   }
 
   .skills-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .contact-links {
