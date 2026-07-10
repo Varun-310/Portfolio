@@ -1,3 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <text x="32" y="44" font-family="monospace" font-size="32" font-weight="bold" fill="#7dcfff" text-anchor="middle" letter-spacing="0">VKS</text>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1b26"/>
+      <stop offset="100%" stop-color="#16161e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7aa2f7"/>
+      <stop offset="100%" stop-color="#7dcfff"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9ece6a"/>
+      <stop offset="100%" stop-color="#73daca"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded square background -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#bg)" stroke="url(#accent)" stroke-width="1.5" opacity="0.95"/>
+  <!-- Terminal chevron: > -->
+  <path d="M12 20 L24 32 L12 44" fill="none" stroke="url(#glow)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Cursor underscore -->
+  <rect x="28" y="38" width="24" height="3.5" rx="1.75" fill="url(#accent)" opacity="0.9"/>
+  <!-- V monogram — subtle, geometric -->
+  <path d="M32 18 L40 30 L48 18" fill="none" stroke="url(#accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
