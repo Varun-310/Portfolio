@@ -561,6 +561,30 @@
   background: var(--bg-titlebar);
 }
 
+/* Popup summary — professional summary inside the card */
+.popup-summary {
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.popup-summary-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--syn-comment);
+  margin-bottom: 4px;
+}
+
+.popup-summary-text {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  line-height: 1.5;
+  color: var(--syn-string);
+  font-style: italic;
+}
+
 /* Stats strip — compact inline row */
 .popup-stats-strip {
   display: flex;

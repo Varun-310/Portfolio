@@ -356,7 +356,7 @@ export default function App() {
   const heroParallax = useTransform(scrollYProgress, [0, 0.3], [0, -60]);
 
   useEffect(() => {
-    const sectionIds = ['hero', 'about', 'skills', 'projects', 'certifications', 'events', 'education', 'contact'];
+    const sectionIds = ['hero', 'skills', 'projects', 'certifications', 'events', 'education', 'contact'];
     const handleScroll = () => {
       let current = 'hero';
       sectionIds.forEach(id => {
@@ -376,7 +376,7 @@ export default function App() {
 
   const navItems = [
     { id: 'hero',           label: '__init__' },
-    { id: 'about',          label: 'about()' },
+
     { id: 'skills',         label: 'skills' },
     { id: 'projects',       label: 'projects' },
     { id: 'certifications', label: 'certs' },
@@ -500,6 +500,12 @@ export default function App() {
                 <span className="cmt"># B.Tech AI &amp; ML · Bannari Amman Institute of Technology</span>
               </div>
 
+              {/* Professional Summary — inside popup */}
+              <div className="popup-summary">
+                <span className="popup-summary-label"># about_me()</span>
+                <span className="popup-summary-text">"AI Engineer specializing in LLM application development, RAG, and end-to-end conversational AI systems. Experienced in deploying LLM-driven products using LangChain, Gemini API, and n8n. SIH 2024 Winner and Top 2% Finalist at India AI Impact Buildathon."</span>
+              </div>
+
               {/* Stats strip — compact inline */}
               <div className="popup-stats-strip">
                 <div className="popup-stat popup-stat-highlight">
@@ -514,7 +520,7 @@ export default function App() {
                 </div>
                 <div className="popup-stat">
                   <CalendarIcon />
-                  <span className="popup-stat-val">6</span>
+                  <span className="popup-stat-val">4</span>
                   <span className="popup-stat-lbl">Events</span>
                 </div>
                 <div className="popup-stat">
@@ -534,20 +540,6 @@ export default function App() {
               </div>
             </motion.div>
           </section>
-
-          <CodeSection id="about" gutterStart={14} gutterCount={11}>
-            <span className="line"><span className="cmt"># ─── Professional Summary ─────────────────────────────────</span></span>
-            <span className="line i1"><span className="kw">def</span> <span className="fn">about_me</span><span className="pnc">(</span><span className="slf">self</span><span className="pnc">):</span></span>
-            <span className="line i2"><span className="str">"""Returns a brief professional summary."""</span></span>
-            <span className="line i2"><span className="kw">return</span> <span className="pnc">(</span></span>
-            <span className="line i3"><span className="str">"AI Engineer specializing in LLM application development, Retrieval-Augmented Generation (RAG),"</span></span>
-            <span className="line i3"><span className="str">"and end-to-end conversational AI systems, with additional depth in computer vision."</span></span>
-            <span className="line i3"><span className="str">"Experienced in building and deploying LLM-driven products — from natural language data platforms"</span></span>
-            <span className="line i3"><span className="str">"and domain-specific chatbots to autonomous agentic systems — using tools such as LangChain, Gemini API,"</span></span>
-            <span className="line i3"><span className="str">"and n8n. Proven track record at national and international hackathons, including SIH 2024 Winner"</span></span>
-            <span className="line i3"><span className="str">"and Top 2% Finalist at the India AI Impact Buildathon."</span></span>
-            <span className="line i2"><span className="pnc">)</span></span>
-          </CodeSection>
 
           {/* ══ SKILLS ══ */}
           <CodeSection id="skills" gutterStart={25} gutterCount={10}>
@@ -611,41 +603,41 @@ export default function App() {
             />
 
             <ProjectCard
-              decorator="GLOF Warning — SAR Analysis"
-              fnName="glof_sar_analysis"
-              accent="blue"
-              description={[
-                'Designed a predictive risk-detection system using Sentinel-1 SAR satellite imagery',
-                'and CNN models to identify early-stage Glacial Lake Outburst Flood (GLOF) indicators.',
-                'Achieved high spatial accuracy by fine-tuning convolutional architectures.',
-              ]}
-              features={[
-                'CNN models for early-stage GLOF risk detection',
-                'High spatial accuracy geospatial imagery classification',
-                'Sentinel-1 SAR radar imagery processing and Rasterio analysis',
-              ]}
-              tech={['Python', 'TensorFlow', 'CNN', 'Sentinel-1', 'OpenCV', 'Rasterio']}
-              repoUrl="https://github.com/Varun-310/SAR-IMAGE-CLASSIFICATION-FOR-GLOF-"
-            />
-
-            <ProjectCard
-              decorator="GLOF Warning — IoT Sensor Network"
-              fnName="glof_iot_sensors"
+              decorator="Early Warning System for GLOF"
+              fnName="ews_glof"
               accent="blue"
               badge="SIH '24 Winner"
               description={[
-                'Developed a real-time GLOF monitoring system integrating water level, temperature,',
-                'ground motion, pressure, and flow rate IoT sensors with XGBoost for anomaly detection.',
-                'Won Smart India Hackathon 2024 (problem statement by DRDO); system designed for Himalayan glacial zones.',
+                'An Early Warning System (EWS) that integrates satellite imagery and IoT sensors',
+                '(seismometers, radar level sensors, temperature sensors, ultrasonic water flow meters)',
+                'to continuously monitor glacial lakes. Uses machine learning to predict potential GLOF events',
+                'based on changes in water levels, ground movement, and environmental conditions.',
               ]}
               features={[
-                'Real-time IoT sensor telemetry (water level, motion, temperature, pressure, flow rate)',
-                'XGBoost ML classifier for instant anomaly detection',
-                'Twilio SMS alerts and React dashboard visualization',
+                'Real-time IoT sensor telemetry with XGBoost anomaly detection',
+                'Sentinel-1 SAR satellite imagery analysis with CNN models',
+                'Interactive React dashboard with live weather integration',
+                'SMS emergency alerts (Twilio) and LoRa communication',
               ]}
-              tech={['FastAPI', 'XGBoost', 'React', 'Arduino/ESP32', 'LoRa', 'Twilio']}
+              tech={['FastAPI', 'XGBoost', 'TensorFlow', 'React', 'Arduino/ESP32', 'LoRa']}
               repoUrl="https://github.com/Varun-310/Early-Warning-System-for-GLOF"
-            />
+            >
+              <div className="sub-project">
+                <span className="line"><span className="cmt"># Sub-module: SAR Image Classification</span></span>
+                <span className="line"><span className="kw">class</span> <span className="cls">SARAnalysis</span><span className="pnc">(</span><span className="cls">EWSModule</span><span className="pnc">):</span></span>
+                <span className="line i1"><span className="str">"""Sentinel-1 SAR imagery + CNNs for early-stage GLOF risk detection."""</span></span>
+                <span className="line i1"><span className="vr">tech</span> <span className="pnc">=</span> <span className="pnc">[</span><span className="str">"CNN"</span><span className="pnc">,</span> <span className="str">"Sentinel-1"</span><span className="pnc">,</span> <span className="str">"OpenCV"</span><span className="pnc">,</span> <span className="str">"Rasterio"</span><span className="pnc">]</span></span>
+                <a href="https://github.com/Varun-310/SAR-IMAGE-CLASSIFICATION-FOR-GLOF-" target="_blank" rel="noreferrer" className="project-link">
+                  <GithubIcon /> view on github
+                </a>
+              </div>
+              <div className="sub-project">
+                <span className="line"><span className="cmt"># Sub-module: IoT Sensor Network</span></span>
+                <span className="line"><span className="kw">class</span> <span className="cls">IoTSensorNetwork</span><span className="pnc">(</span><span className="cls">EWSModule</span><span className="pnc">):</span></span>
+                <span className="line i1"><span className="str">"""Real-time sensor fusion: water level, motion, temp, pressure, flow rate."""</span></span>
+                <span className="line i1"><span className="vr">tech</span> <span className="pnc">=</span> <span className="pnc">[</span><span className="str">"XGBoost"</span><span className="pnc">,</span> <span className="str">"ESP32"</span><span className="pnc">,</span> <span className="str">"LoRa"</span><span className="pnc">,</span> <span className="str">"Twilio"</span><span className="pnc">]</span></span>
+              </div>
+            </ProjectCard>
 
             <ProjectCard
               decorator="Samudra (FloatChat) — Conversational Ocean Data Platform"
@@ -662,7 +654,7 @@ export default function App() {
                 'Interactive dashboard visualizations for experts and non-specialists',
               ]}
               tech={['Python', 'Gemini API', 'LangChain', 'NetCDF', 'Streamlit', 'Pandas']}
-              repoUrl="https://github.com/Varun-310"
+              repoUrl="https://github.com/Varun-310/SAMUDRA"
             />
 
             <ProjectCard
@@ -705,6 +697,7 @@ export default function App() {
               decorator="Aran — Local Vulnerability Report Generator"
               fnName="aran_report_generator"
               accent="green"
+              isPrivate={true}
               badge="Innovators Hackathon Finalist"
               description={[
                 'Built a local LLM-inference-powered report generator for vulnerability analysis —',
@@ -716,7 +709,7 @@ export default function App() {
                 'Clean report format structure generation',
               ]}
               tech={['Python', 'Ollama', 'Llama-3', 'FastAPI', 'Markdown']}
-              repoUrl="https://github.com/Varun-310"
+              repoUrl=""
             />
 
             <ProjectCard
@@ -735,7 +728,7 @@ export default function App() {
                 'Intuitive conversational flow for guidance on Justice initiatives',
               ]}
               tech={['Python', 'LangChain', 'Ollama', 'ChromaDB', 'RAG']}
-              repoUrl="https://github.com/Varun-310"
+              repoUrl="https://github.com/Varun-310/Neethi"
             />
 
             <span className="line">&nbsp;</span>
