@@ -1,32 +1,31 @@
 <!doctype html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <title>Varun K S — AI Engineer | Portfolio</title>
-  <meta name="description"
-    content="Portfolio of Varun K S — AI Engineer specializing in LLM-powered systems, real-time ML pipelines, NLP, and Computer Vision. SIH '24 Winner." />
-  <meta name="author" content="Varun K S" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Varun K S — AI Engineer" />
-  <meta property="og:description"
-    content="AI Engineer specializing in LLM-powered systems, real-time ML pipelines, and Computer Vision. SIH '24 Winner." />
-  <meta property="og:site_name" content="Varun K S Portfolio" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Varun K S — AI Engineer" />
-  <meta name="twitter:description"
-    content="AI Engineer specializing in LLM-powered systems, real-time ML pipelines, and Computer Vision. SIH '24 Winner." />
-</head>
-
-<body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
-</body>
-
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Varun K S, AI Engineer</title>
+    <meta name="description" content="Varun K S is an AI engineer who takes problems apart until they make sense: LLM systems, retrieval pipelines and agents. Smart India Hackathon 2024 winner." />
+    <meta name="theme-color" content="#0F1512" />
+    <meta property="og:title" content="Varun K S, AI Engineer" />
+    <meta property="og:description" content="LLM systems, retrieval pipelines and agents that hold up outside the demo." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://varunks3.vercel.app/" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png?v=2" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+    <script>
+      // Pick the theme before first paint so there is no flash.
+      (function () {
+        var t;
+        try { t = localStorage.getItem('theme'); } catch (e) {}
+        if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.dataset.theme = t;
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>Varun K S, AI engineer. Email itsvarun310@gmail.com, GitHub github.com/Varun-310.</noscript>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

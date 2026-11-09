@@ -1,16 +1,29 @@
-# React + Vite
+# Varun K S, portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A scroll-driven story of who I am and what I build, with a pixel-art version of me that walks through the page and changes what he is doing for each chapter and project.
 
-Currently, two official plugins are available:
+Built with React, Vite, GSAP (ScrollTrigger, SplitText) and Lenis.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Run
 
-## React Compiler
+```bash
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # outputs dist/
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Where things live
 
-## Expanding the ESLint configuration
+| What | File |
+|---|---|
+| Site copy (about, projects, milestones, toolkit) | `src/data.js` |
+| Resume content (viewer and PDF) | `src/resume.js` |
+| Resume PDF served for download | `public/Varun_K_S_Resume.pdf` |
+| Avatar poses (one PNG per pose) | `public/avatar/` |
+| Sections | `src/sections/` |
+| Avatar, nav, resume viewer | `src/components/` |
+| Styles | `src/styles.css`, `src/resume.css` |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The resume page can be printed on its own at `/?print=resume` (A4, one page), which is how the PDF is made.
+
+If you replace the avatar art, bump `VERSION` in `src/components/ImageAvatar.jsx` so browsers fetch the new files.

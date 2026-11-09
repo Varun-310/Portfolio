@@ -1,0 +1,97 @@
+/* ── The resume page (screen viewer and PDF share this) ─────────────── */
+.rdoc {
+  --r-ink: #14181a;
+  --r-muted: #4a5054;
+  --r-faint: #7a7f82;
+  --r-rule: #d9d6cc;
+  --r-accent: #c4532d;
+  box-sizing: border-box;
+  width: 794px; min-height: 1123px;
+  padding: 46px 56px 36px;
+  background: #fdfcf8; color: var(--r-ink);
+  font-family: 'Schibsted Grotesk Variable', 'Schibsted Grotesk', Arial, sans-serif;
+  font-size: 11.7px; line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  text-align: left;
+}
+.rdoc * { box-sizing: border-box; }
+.rdoc a { color: inherit; text-decoration: none; }
+.rdoc h1, .rdoc h2, .rdoc h3, .rdoc p, .rdoc ul, .rdoc dl, .rdoc dd { margin: 0; padding: 0; }
+.rdoc ul { list-style: none; }
+.rdoc-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; padding-bottom: 14px; border-bottom: 2px solid var(--r-ink); }
+.rdoc h1 { font-size: 32px; line-height: 1; font-weight: 750; letter-spacing: -0.03em; }
+.rdoc-title { margin-top: 7px; font-size: 14px; font-weight: 600; color: var(--r-accent); letter-spacing: 0.01em; }
+.rdoc-contact { text-align: right; color: var(--r-muted); font-size: 11.2px; line-height: 1.6; }
+.rdoc-summary { margin-top: 14px; color: var(--r-ink); font-size: 12px; line-height: 1.5; }
+.rdoc section { margin-top: 17px; }
+.rdoc h2 {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--r-ink); padding-bottom: 4px; margin-bottom: 8px; border-bottom: 1px solid var(--r-rule);
+}
+.rdoc h2.rdoc-gap { margin-top: 15px; }
+.rdoc-item + .rdoc-item { margin-top: 10px; }
+.rdoc-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.rdoc h3 { font-size: 12.8px; font-weight: 700; }
+.rdoc h3 span { font-weight: 600; }
+.rdoc-kind { font-weight: 450 !important; color: var(--r-muted); margin-left: 6px; }
+.rdoc-when, .rdoc-note { font-size: 11px; color: var(--r-muted); white-space: nowrap; }
+.rdoc-note { color: var(--r-accent); font-weight: 600; }
+.rdoc-points { margin-top: 3px; }
+.rdoc-points li { position: relative; padding-left: 13px; color: #2a2f31; }
+.rdoc-points li + li { margin-top: 2px; }
+.rdoc-points li::before { content: ''; position: absolute; left: 2px; top: 0.62em; width: 4px; height: 4px; border-radius: 1px; background: var(--r-accent); }
+.rdoc-stack { margin-top: 3px; padding-left: 13px; font-size: 10.8px; color: var(--r-faint); }
+.rdoc-cols { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 26px; }
+.rdoc-skills div + div { margin-top: 7px; }
+.rdoc-skills dt { font-weight: 700; font-size: 11.6px; }
+.rdoc-skills dd { color: #2a2f31; }
+.rdoc-ach li { color: #2a2f31; }
+.rdoc-ach li + li { margin-top: 5px; }
+.rdoc-ach b { font-weight: 700; color: var(--r-ink); }
+.rdoc-edu, .rdoc-cert { color: #2a2f31; }
+
+/* ── The viewer ─────────────────────────────────────────────────────── */
+html.is-locked, html.is-locked body { overflow: hidden; }
+.rv { position: fixed; inset: 0; z-index: 90; }
+.rv-scrim {
+  position: absolute; inset: 0; background: color-mix(in oklab, var(--ink) 70%, transparent);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  opacity: 0; transition: opacity 0.4s var(--ease);
+}
+.rv-sheet {
+  position: absolute; left: 50%; top: 18px; bottom: 0; width: min(900px, calc(100% - 16px));
+  display: flex; flex-direction: column;
+  background: var(--bg); border: 1px solid var(--line); border-bottom: 0;
+  border-radius: calc(var(--r) * 1.4) calc(var(--r) * 1.4) 0 0; overflow: hidden;
+  box-shadow: 0 -30px 80px -30px rgba(0, 0, 0, 0.6);
+  transform: translate(-50%, 104%); transition: transform 0.55s var(--ease);
+}
+.rv.is-shown .rv-scrim { opacity: 1; }
+.rv.is-shown .rv-sheet { transform: translate(-50%, 0); }
+.rv-bar {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 12px 14px 12px 18px; border-bottom: 1px solid var(--line);
+}
+.rv-file { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 0.95rem; min-width: 0; }
+.rv-file span:nth-child(2) { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rv-dot { width: 10px; height: 10px; border-radius: 999px; background: var(--signal); flex-shrink: 0; }
+.rv-meta { font-family: var(--mono); font-size: 0.75rem; font-weight: 400; color: var(--faint); white-space: nowrap; }
+.rv-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.rv-actions .btn svg { width: 16px; height: 16px; }
+.rv-scroll { flex: 1; overflow: auto; overscroll-behavior: contain; padding: 28px 12px 48px; background: var(--tint); }
+.rv-paper {
+  width: 794px; margin: 0 auto; border-radius: 4px; overflow: hidden;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05), 0 24px 60px -20px rgba(0, 0, 0, 0.55);
+}
+@media (max-width: 560px) {
+  .rv-meta { display: none; }
+  .rv-sheet { top: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rv-sheet, .rv-scrim { transition: none; }
+}
+
+/* ── Print route (?print=resume) used to make the PDF ─────────────── */
+@page { size: A4; margin: 0; }
+html.print-resume, html.print-resume body { margin: 0; padding: 0; background: #fdfcf8; }
+html.print-resume .rdoc { min-height: 0; height: 1123px; overflow: hidden; }
